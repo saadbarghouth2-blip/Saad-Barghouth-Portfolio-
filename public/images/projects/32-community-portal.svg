@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800" role="img" aria-label="Community Portal — conceptual illustration">
+  <rect width="100%" height="100%" fill="#071428"/>
+  <!-- people + globe + speech -->
+  <g transform="translate(120,160)">
+    <circle cx="120" cy="80" r="36" fill="#052632" stroke="#06b6d4"/>
+    <circle cx="200" cy="80" r="36" fill="#052632" stroke="#7af0e5" opacity="0.8"/>
+    <circle cx="160" cy="140" r="36" fill="#052632" stroke="#34d399" opacity="0.9"/>
+  </g>
+
+  <g transform="translate(480,160)">
+    <rect x="0" y="0" width="520" height="300" rx="12" fill="#062833" stroke="#0e3a48"/>
+    <g transform="translate(24,24)" fill="#9ff6e1">
+      <rect x="0" y="0" width="420" height="18" rx="6"/>
+      <rect x="0" y="36" width="300" height="12" rx="6"/>
+      <rect x="0" y="64" width="260" height="12" rx="6"/>
+    </g>
+    <g transform="translate(420,18)">
+      <path d="M24 8 A24 24 0 1 1 23.9 8" fill="#9ff6e1" opacity="0.06"/>
+    </g>
+  </g>
+
+  <text x="120" y="620" fill="#bff6f0" font-family="Inter, Arial" font-size="28" font-weight="600">Community Portal</text>
+  <text x="120" y="656" fill="#9fe7e1" font-family="Inter, Arial" font-size="14">civic reports • open data • engagement</text>
+</svg>

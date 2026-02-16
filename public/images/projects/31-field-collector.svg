@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800" role="img" aria-label="Field collection — conceptual">
+  <rect width="100%" height="100%" fill="#041726"/>
+
+  <!-- mobile + pin + check -->
+  <g transform="translate(160,120)">
+    <rect x="0" y="0" width="180" height="340" rx="20" fill="#062a34" stroke="#0f3a44"/>
+    <circle cx="90" cy="150" r="40" fill="#08323a" stroke="#06b6d4"/>
+    <path d="M80 150 L90 162 L110 138" stroke="#06b6d4" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+
+  <g transform="translate(420,140)">
+    <path d="M140 40c44 0 80 36 80 80 0 72-80 132-80 132s-80-60-80-132c0-44 36-80 80-80z" fill="#072732" stroke="#06b6d4"/>
+    <circle cx="140" cy="120" r="16" fill="#06b6d4"/>
+  </g>
+
+  <text x="140" y="620" fill="#bff6f0" font-family="Inter, Arial" font-size="28" font-weight="600">Field Collector (idea)</text>
+  <text x="140" y="656" fill="#9fe7e1" font-family="Inter, Arial" font-size="14">mobile • offline collection • validated forms</text>
+</svg>
