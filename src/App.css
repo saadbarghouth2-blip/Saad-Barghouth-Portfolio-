@@ -1,0 +1,506 @@
+/عرض الصفحات و كل حاجة في الويبسايت بطريقة احترافية/* App-specific styles */
+
+/* Avoid global smooth scrolling: it can make route navigations feel sluggish and
+   can fight with ScrollTrigger-managed scrolling. */
+
+/* Section base styles */
+section {
+  position: relative;
+  width: 100%;
+}
+
+/* Pin spacer styling */
+.pin-spacer {
+  background: transparent !important;
+}
+
+/* Avoid global `will-change`: it can create too many compositor layers and
+   reduce performance across the site. */
+
+/* Image optimization */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Avoid `transition: all` globally (expensive + unintended). Keep it to common UI properties. */
+button,
+a {
+  transition-property: color, background-color, border-color, opacity, transform, box-shadow;
+  transition-duration: 0.3s;
+  transition-timing-function: ease;
+}
+
+/* Focus states for accessibility */
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid rgba(46, 196, 182, 0.8);
+  outline-offset: 2px;
+}
+
+/* Card hover lift effect */
+.card-hover {
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-6px);
+  border-color: rgba(46, 196, 182, 0.5);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* Timeline marker glow */
+.timeline-marker {
+  box-shadow: 0 0 15px rgba(46, 196, 182, 0.5);
+}
+
+/* Form input focus */
+input:focus,
+textarea:focus {
+  border-color: #2EC4B6 !important;
+  box-shadow: 0 0 0 2px rgba(46, 196, 182, 0.2) !important;
+}
+
+/* Responsive typography adjustments */
+@media (max-width: 768px) {
+  .text-display-1 {
+    font-size: clamp(32px, 8vw, 44px);
+  }
+  
+  .text-display-2 {
+    font-size: clamp(28px, 6vw, 34px);
+  }
+  
+  .text-display-3 {
+    font-size: clamp(24px, 5vw, 28px);
+  }
+}
+
+/* Mobile menu animation */
+@media (max-width: 768px) {
+  nav button {
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Low-perf mode (set via `document.documentElement.dataset.perf = "low"`). */
+:root[data-perf="low"] .grid-overlay {
+  animation: none;
+}
+
+:root[data-perf="low"] .route-sweep {
+  animation: none;
+  opacity: 0;
+  filter: none;
+  mix-blend-mode: normal;
+}
+
+:root[data-perf="low"] .gallery-aurora,
+:root[data-perf="low"] .projects-aurora,
+:root[data-perf="low"] .process-aurora,
+:root[data-perf="low"] .skills-aurora,
+:root[data-perf="low"] .testimonials-aurora {
+  animation: none;
+}
+
+:root[data-perf="low"] .backdrop-blur,
+:root[data-perf="low"] .backdrop-blur-none,
+:root[data-perf="low"] .backdrop-blur-sm,
+:root[data-perf="low"] .backdrop-blur-md,
+:root[data-perf="low"] .backdrop-blur-lg,
+:root[data-perf="low"] .backdrop-blur-xl,
+:root[data-perf="low"] .backdrop-blur-2xl,
+:root[data-perf="low"] .backdrop-blur-3xl {
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
+}
+
+:root[data-perf="low"] .blur-2xl {
+  filter: none !important;
+}
+
+/* Custom selection color */
+::selection {
+  background: rgba(46, 196, 182, 0.3);
+  color: #F4F6FA;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0B0F17;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1f2937;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #2EC4B6;
+}
+
+/* Loading state for images */
+img {
+  background: linear-gradient(135deg, #111827 0%, #0B0F17 100%);
+}
+
+/* Ensure text doesn't overflow */
+p, h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  hyphens: auto;
+}
+
+/* Grid pattern animation */
+@keyframes gridPulse {
+  0%, 100% {
+    opacity: 0.03;
+  }
+  50% {
+    opacity: 0.05;
+  }
+}
+
+.grid-overlay {
+  animation: gridPulse 4s ease-in-out infinite;
+}
+
+/* Route transition sweep */
+@keyframes routeSweep {
+  0% {
+    transform: translateX(-70%) skewX(-12deg);
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(70%) skewX(-12deg);
+    opacity: 0;
+  }
+}
+
+.route-sweep {
+  height: 160%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(46, 196, 182, 0.22) 44%,
+    rgba(244, 246, 250, 0.18) 50%,
+    rgba(46, 196, 182, 0.22) 56%,
+    transparent 100%
+  );
+  filter: blur(14px);
+  mix-blend-mode: screen;
+  opacity: 0;
+  animation: routeSweep 560ms ease-out;
+}
+
+@media (max-width: 640px) {
+  .route-sweep {
+    height: 140%;
+    filter: blur(10px);
+    opacity: 0;
+  }
+}
+
+.nav-pill {
+  transition-timing-function: cubic-bezier(0.2, 0.9, 0.2, 1);
+}
+
+/* Gallery hero aurora */
+@keyframes auroraDrift {
+  0% {
+    transform: translate3d(-8%, -6%, 0) scale(1);
+    opacity: 0.9;
+  }
+  45% {
+    transform: translate3d(6%, 4%, 0) scale(1.06);
+    opacity: 1;
+  }
+  100% {
+    transform: translate3d(-8%, -6%, 0) scale(1);
+    opacity: 0.9;
+  }
+}
+
+.gallery-aurora {
+  position: absolute;
+  inset: -20%;
+  background:
+    radial-gradient(60% 55% at 25% 25%, rgba(46, 196, 182, 0.18) 0%, transparent 60%),
+    radial-gradient(55% 50% at 70% 30%, rgba(125, 211, 252, 0.14) 0%, transparent 62%),
+    radial-gradient(60% 55% at 50% 75%, rgba(244, 246, 250, 0.10) 0%, transparent 65%);
+  filter: blur(28px);
+  opacity: 0.95;
+  animation: auroraDrift 14s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gallery-aurora {
+    animation: none;
+  }
+}
+
+/* Projects hero aurora */
+.projects-aurora {
+  position: absolute;
+  inset: -22%;
+  background:
+    radial-gradient(62% 55% at 25% 25%, rgba(46, 196, 182, 0.16) 0%, transparent 60%),
+    radial-gradient(55% 50% at 70% 30%, rgba(56, 189, 248, 0.12) 0%, transparent 62%),
+    radial-gradient(60% 55% at 55% 75%, rgba(52, 211, 153, 0.10) 0%, transparent 65%);
+  filter: blur(28px);
+  opacity: 0.95;
+  animation: auroraDrift 16s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .projects-aurora {
+    animation: none;
+  }
+}
+
+/* Process hero aurora */
+.process-aurora {
+  position: absolute;
+  inset: -24%;
+  background:
+    radial-gradient(62% 55% at 22% 28%, rgba(46, 196, 182, 0.16) 0%, transparent 60%),
+    radial-gradient(55% 50% at 74% 34%, rgba(56, 189, 248, 0.11) 0%, transparent 62%),
+    radial-gradient(60% 55% at 55% 80%, rgba(244, 246, 250, 0.09) 0%, transparent 65%);
+  filter: blur(30px);
+  opacity: 0.95;
+  animation: auroraDrift 15s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .process-aurora {
+    animation: none;
+  }
+}
+
+/* Skills hero aurora */
+.skills-aurora {
+  position: absolute;
+  inset: -24%;
+  background:
+    radial-gradient(62% 55% at 18% 30%, rgba(46, 196, 182, 0.14) 0%, transparent 60%),
+    radial-gradient(55% 50% at 76% 34%, rgba(56, 189, 248, 0.11) 0%, transparent 62%),
+    radial-gradient(60% 55% at 55% 78%, rgba(52, 211, 153, 0.09) 0%, transparent 65%);
+  filter: blur(30px);
+  opacity: 0.95;
+  animation: auroraDrift 16s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skills-aurora {
+    animation: none;
+  }
+}
+
+/* Testimonials hero aurora */
+.testimonials-aurora {
+  position: absolute;
+  inset: -24%;
+  background:
+    radial-gradient(62% 55% at 25% 25%, rgba(46, 196, 182, 0.16) 0%, transparent 60%),
+    radial-gradient(55% 50% at 72% 32%, rgba(56, 189, 248, 0.12) 0%, transparent 62%),
+    radial-gradient(60% 55% at 55% 78%, rgba(244, 246, 250, 0.10) 0%, transparent 65%);
+  filter: blur(28px);
+  opacity: 0.95;
+  animation: auroraDrift 15s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .testimonials-aurora {
+    animation: none;
+  }
+}
+
+/* Teal glow effect */
+.glow-teal {
+  box-shadow: 0 0 20px rgba(46, 196, 182, 0.3);
+}
+
+/* Border gradient */
+.border-gradient {
+  border-image: linear-gradient(135deg, rgba(46, 196, 182, 0.5), transparent) 1;
+}
+
+/* Text shadow for better readability on images */
+.text-shadow {
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Ensure proper stacking context */
+.z-grid {
+  z-index: 1;
+}
+
+.z-vignette {
+  z-index: 2;
+}
+
+.z-noise {
+  z-index: 3;
+}
+
+.z-content {
+  z-index: 4;
+}
+
+.z-nav {
+  z-index: 100;
+}
+
+/* Small-screen (phones) fine-tuning: reduce vertical rhythm, cap large headings,
+   improve touch targets and card padding for better usability on narrow screens */
+@media (max-width: 420px) {
+  /* Reduce large section paddings on small devices */
+  .py-24 {
+    padding-top: 3rem /*48px*/;
+    padding-bottom: 3rem /*48px*/;
+  }
+
+  /* Slightly smaller hero heading to avoid wrapping and huge line-heights */
+  #hero h1,
+  .hero-panel h1,
+  .font-display.text-display-1 {
+    font-size: clamp(26px, 8.5vw, 40px) !important;
+    line-height: 1.02 !important;
+    letter-spacing: -0.01em;
+  }
+
+  /* Improve readability: reduce leading of large display text */
+  .text-display-2 {
+    font-size: clamp(20px, 5.6vw, 32px);
+  }
+
+  /* Make primary CTAs easier to tap */
+  .touch-target,
+  .hero-item .touch-target,
+  .inline-flex.touch-target {
+    min-height: 44px;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+
+  /* Make hero stat blocks stack neatly and not overflow */
+  .hero-item .w-full.sm\:min-w-\[132px\] {
+    display: flex;
+    justify-content: flex-start;
+    gap: 0.5rem;
+  }
+
+  /* Reduce card padding slightly on very small screens */
+  .project-card .p-6,
+  .rounded-sm.border.p-6 {
+    padding: 0.75rem; /* 12px */
+  }
+
+  /* Ensure nav mobile button has a comfortable hit area */
+  nav button[aria-label] {
+    min-width: 44px;
+    min-height: 44px;
+    padding: 0.375rem;
+  }
+
+  /* Prevent extremely long lines on tiny screens */
+  .max-w-4xl {
+    max-width: 44ch;
+  }
+
+  /* Targeted seam fix: small gradient bar at the bottom of the hero to mask sub-pixel cracks while preserving the original hero overlay */
+  #hero::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 2px; /* very small — only to cover sub-pixel seam */
+    background: linear-gradient(180deg, rgba(2,6,23,0), rgba(2,6,23,0.95));
+    pointer-events: none;
+    z-index: 5; /* sit above background overlays but beneath hero content */
+  }
+
+  /* Nudge the following section up slightly to eliminate a sub-pixel gap that can appear when scrolling */
+  #home-overview {
+    margin-top: -1px;
+  }
+
+  /* Slightly tighten grid gaps so content fits without excessive vertical scroll */
+  .gap-10 {
+    gap: 1.25rem; /* 20px */
+  }
+
+  /* Improve gallery/media aspect handling on narrow screens */
+  .aspect-[4/3],
+  .aspect-[3/2],
+  .aspect-[16/9] {
+    aspect-ratio: auto 4 / 3;
+    height: auto;
+    min-height: 120px;
+  }
+
+  /* Mobile-nav: make inner content scrollable and show visual scroll hints */
+  #mobile-nav .mobile-nav-scroll {
+    /* allow the mobile nav to expand to the viewport height (nav bar reserved) */
+    max-height: calc(100vh - 64px);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-right: 0.5rem; /* prevent last item being under the fade */
+    padding-bottom: 0.5rem; /* ensure last item doesn't butt under the fade */
+    margin-bottom: -1px; /* remove thin seam from sub-pixel rounding */
+  }
+
+  #mobile-nav .mobile-nav-fade-top,
+  #mobile-nav .mobile-nav-fade-bottom {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 48px; /* larger so fade overlaps edges cleanly */
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 180ms ease;
+    z-index: 30;
+  }
+
+  #mobile-nav .mobile-nav-fade-top {
+    top: -6px; /* overlap the top edge to hide any seam */
+    background: linear-gradient(180deg, rgba(2,6,23,1), rgba(2,6,23,0));
+  }
+
+  #mobile-nav .mobile-nav-fade-bottom {
+    bottom: -6px; /* overlap below to hide seam between nav and the section */
+    background: linear-gradient(0deg, rgba(2,6,23,1), rgba(2,6,23,0));
+  }
+
+  #mobile-nav[data-has-scroll-top="true"] .mobile-nav-fade-top,
+  #mobile-nav[data-has-scroll-bottom="true"] .mobile-nav-fade-bottom {
+    opacity: 1;
+  }
+}
